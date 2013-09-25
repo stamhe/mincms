@@ -157,7 +157,7 @@ class ModulesController extends \application\core\AuthController
 		* reload modules
 		* 重新加载模块
 		*/ 
-		\MinCache::load();  
+		$this->_load();  
 	 	return $model->active;
 	}
 	 

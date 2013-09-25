@@ -18,8 +18,7 @@
 	            
 	        ],
 	    	"files": [
-		    "./packages/core/helpers.php",
-		    "./packages/mysql.php", 
+		    "./packages/core/helpers.php", 
                     "./packages/core/MinCache.php", 
 		    "./packages/core/helpers_function.php"			
 	    	],

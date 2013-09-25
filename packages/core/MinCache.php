@@ -6,15 +6,7 @@
 * @author Sun < mincms@outlook.com >
 * @since Yii 2.0
 */
-/*
-* load modules 
-* 加载模块
-*/
- 
-if(YII_DEBUG ===true){ 
-	MinCache::load();  
-}elseif(!MinCache::set('all_modules'))
-	MinCache::load();  
+
 class MinCache{
 	static $type;
 	static $obj;
@@ -112,61 +104,6 @@ class MinCache{
 		}else{
 			@unlink(static::$file);
 		}
-	}
-	
-	/*
-	* load modules 
-	* 加载模块
-	*/
-	static function load(){
-		global $app; 
-		$db = $app['_db'];
-		$sql = "select * from core_modules where active=1 order by sort desc,id asc";  
-		if(!$db->id) return;
-		$all = $db->query($sql)->all(); 
-		$m = static::modules(true); 
-		
-	 	if(!$all) {
-	 		$all = array('core', 'auth','imagecache','file' ,'route');
-	 	}
-		foreach($all as $v){
-			$name = $v->name;
-			if(!$name) $name = $v; 
-			$out[$name] = 1;
-			//加载Hook.php
-			$alis = $m[$name];			
-	 		$dir = $app[$alis].'/modules/';
-			$h = $dir.$name.'/Hook.php';
-			if(file_exists($h)){ 
-				include_once($h);
-		 		$reflection = new \ReflectionClass("\\".$alis."\modules\\$name\Hook"); 
-				$methods = $reflection->getMethods();  
-				if($methods){
-					foreach($methods as $method){
-						$action[$method->name][$name] = "\\".$method->class;
-					} 
-				} 
-			 
-			} 
-		} 
-		$sql = "select * from route  order by sort desc,id asc";
-		$all = $db->query($sql)->all(); 
-		if($all){
-			foreach($all as $v){
-				$a = $v->route;
-				$a = str_replace('[','<',$a);
-				$a = str_replace(']','>',$a); 
-				$route[$a] = $v->route_to;
- 			}  
-			static::set('route',$route);
-		} 
-		
-		static::set('all_modules_alias',$m); 
-		static::set('all_modules',$out);  
-		$hooks = static::set('hooks');
-		if($hooks && $action) $action = merge($hooks,$action); 
-		static::set('hooks',$action); 
-		
-	}
+	}  
 	
 }

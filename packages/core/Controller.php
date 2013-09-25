@@ -1,4 +1,5 @@
 <?php namespace application\core;  
+use application\core\DB;
 /**
 *  default controller
 * 
@@ -32,7 +33,15 @@ class Controller extends \yii\web\Controller
 	*/
 	public $mongo_db; 
 	function init(){
-		parent::init();   
+		parent::init();  
+		/*
+		* load modules 
+		* 加载模块
+		*/
+		 
+		if(YII_DEBUG ===true || !MinCache::set('all_modules')) 
+			$this->_load();  
+			 
 		if(class_exists('Mongo') && true === params('mongo_enable') )
 			$this->mongo_db = new MongoDB;
 	 
@@ -81,5 +90,59 @@ class Controller extends \yii\web\Controller
 					return $p;
 			}
 		}
+	}
+	
+	/*
+	* load modules 
+	* 加载模块
+	*/
+	protected function _load(){ 
+		$sql = "select * from core_modules where active=1 order by sort desc,id asc";  
+		$all = DB::queryAll($sql);  
+		$m = \MinCache::modules(true);  
+	 	if(!$all) {
+	 		$all = array('core', 'auth','imagecache','file' ,'route');
+	 	}
+	 	 
+		foreach($all as $v){ 
+			if(is_array($v))
+				$name = $v['name']; 
+			else
+				 $name = $v;  
+			$out[$name] = 1;
+			//加载Hook.php
+			$alis = $m[$name];			
+	 		$dir = $app[$alis].'/modules/';
+			$h = $dir.$name.'/Hook.php';
+			if(file_exists($h)){ 
+				include_once($h);
+		 		$reflection = new \ReflectionClass("\\".$alis."\modules\\$name\Hook"); 
+				$methods = $reflection->getMethods();  
+				if($methods){
+					foreach($methods as $method){
+						$action[$method->name][$name] = "\\".$method->class;
+					} 
+				} 
+			 
+			} 
+		} 
+		$sql = "select * from route  order by sort desc,id asc";
+		$all = DB::queryAll($sql); 
+		if($all){
+			foreach($all as $v){
+				$a = $v->route;
+				$a = str_replace('[','<',$a);
+				$a = str_replace(']','>',$a); 
+				$route[$a] = $v->route_to;
+ 			}  
+			\MinCache::set('route',$route);
+		} 
+		
+		\MinCache::set('all_modules_alias',$m); 
+		\MinCache::set('all_modules',$out);  
+		$hooks = \MinCache::set('hooks');
+		if($hooks && $action) $action = merge($hooks,$action); 
+		\MinCache::set('hooks',$action); 
+		
 	}
 }
