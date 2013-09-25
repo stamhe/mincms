@@ -12,40 +12,10 @@
 
 ## install   
 
-### step 1 [Clone & submodule update] 
 ```
-git clone git@github.com:mincms/mincms.git
-cd mincms
-git submodule init
-git submodule update
-cd packages 
+php composer.phar install   
 ```
-### step 2 [install Composer]
-windows  [Composer Download](http://getcomposer.org/Composer-Setup.exe)
-
-Linux  Composer Download
-```
-curl -sS https://getcomposer.org/installer | php
-```
-or 
-```
-php -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
-```
-
-run composer update
-
-Windows
-```
-composer update	
-```
-Linux
-```
-php composer.phar update   
-```
-
-if you have [permission-denied-publickey](https://help.github.com/articles/error-permission-denied-publickey) . please check ssh key.
-
-### step 3 [vhosts config]
+### vhosts config
 httpd-vhosts `yourdomain` is your custom domain
 ```
 <VirtualHost *:80>
@@ -57,11 +27,8 @@ httpd-vhosts `yourdomain` is your custom domain
 </VirtualHost>
 ```
 Notice `mincms/app/public` is webroot
-
-### step 4 [install mincms]
 visite `http://yourdomain` it will show default page. there is install link.if your didn't installed mincms before.
-
-backend link `http://yourdomain/admin.html` 
+backend link `http://yourdomain/admin` 
 
  
 
@@ -72,28 +39,10 @@ backend link `http://yourdomain/admin.html`
 * email module support send mailer to some one
 * content module ,this is very powerful module.it is easy create many kinds of contents.
 * imageache module ,real cool module ,it it easy set image effect such as resize crop and so on
-* for more great functions. install it. lol :)
- 
-### MinCMS STRUCTS
-```
-packages                    
-	application/        comm packages. contain modules,widget ETC,alias is @application
-	web/                web code for app/web  you can use LN to app/web
-	vendor/             composer autoload
-	runtime/	    cache before Yii2 bootstrap
-app
-	protected/          	    application code
-		controllers/        controllers
-		hook/		    hooks
-		models/             
-		runtime/            cache
-		config/             website config such as database  
-		modules/            modules for @app the name can't the same as @application/modules
-	web/          	    website root
-```
-
+* for more great functions. install it. lol :) 
 
 ## Documents
+   On dev......
 
 ### model show lists
 controller:
