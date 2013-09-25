@@ -1,4 +1,4 @@
-## MinCMS  2.0.1 Beta 1
+## MinCMS  2.1 RELASE
    
 ## Technology
 * [Yii 2](http://github.com/yiisoft/yii2)
