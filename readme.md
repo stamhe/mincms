@@ -10,12 +10,7 @@
 * MCrypt, GD, Reflection, PCRE, SPL, MBString, Intl  extends
 * Apache Rewrite 
 
-## install   
-
-```
-php composer.phar install   
-```
-### vhosts config
+### INSTALL
 httpd-vhosts `yourdomain` is your custom domain
 ```
 <VirtualHost *:80>
