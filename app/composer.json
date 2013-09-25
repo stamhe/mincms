@@ -1,0 +1,16 @@
+{  
+	"require": {
+		"php": ">=5.3.0", 
+		"php-instagram-api/php-instagram-api":"dev-master"  
+	},
+	"autoload": {
+	        "classmap": [ 
+	        ],
+	    	"files": [ 		
+	    	],
+	        "psr-0": { 
+	        }
+	 } 
+ 
+}
+
