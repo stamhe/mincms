@@ -225,8 +225,8 @@ function language($name='language'){
  	}elseif(cookie($name)){ 
  		return \Yii::$app->language = cookie($name);
  	}
- 	$lan = \Yii::$app->request->getAcceptedLanguages();
-	$lan = $lan[0]; 
+ 	$lan = \Yii::$app->request->getAcceptedLanguages(); 
+	$lan = $lan[0];  
 	return \Yii::$app->language = $lan;
  	
 }
@@ -444,8 +444,9 @@ function url_action($url=null,$parmas=null){
 * @param  array $category  category for translation. default value 'application'
 * @return string  tanslated string.
 */
-function __($message,$category='app',  $params = array(), $language = null){ 
-	return Yii::t($category, trim($message), $params = array(), $language = null);
+function __($message,$category='app',  $params = array()){ 
+	$language = language();
+	return Yii::t($category, $message, $params, $language);
 }
 /**
 * get/set cookie

@@ -72,9 +72,7 @@ class Arr
  		} 
  		return count($arr);
  	}
- 	static function query($array){
- 		return http_build_query($array);
- 	}
+ 	 
 	/**
 	* 向下生成tree,返回的是数组 
 	* 给select框使用

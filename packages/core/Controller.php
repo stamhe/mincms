@@ -32,14 +32,15 @@ class Controller extends \yii\web\Controller
 	* mongo_db
 	*/
 	public $mongo_db; 
+	public $db = true;
 	function init(){
 		parent::init();  
 		/*
 		* load modules 
 		* 加载模块
 		*/
-		 
-		if(YII_DEBUG ===true || !MinCache::set('all_modules')) 
+		
+		if($this->db === true && (YII_DEBUG ===true || !MinCache::set('all_modules')) ) 
 			$this->_load();  
 			 
 		if(class_exists('Mongo') && true === params('mongo_enable') )
@@ -96,14 +97,14 @@ class Controller extends \yii\web\Controller
 	* load modules 
 	* 加载模块
 	*/
-	protected function _load(){ 
+	protected function _load(){  
 		$sql = "select * from core_modules where active=1 order by sort desc,id asc";  
 		$all = DB::queryAll($sql);  
 		$m = \MinCache::modules(true);  
+		
 	 	if(!$all) {
 	 		$all = array('core', 'auth','imagecache','file' ,'route');
-	 	}
-	 	 
+	 	} 
 		foreach($all as $v){ 
 			if(is_array($v))
 				$name = $v['name']; 
@@ -122,20 +123,21 @@ class Controller extends \yii\web\Controller
 					foreach($methods as $method){
 						$action[$method->name][$name] = "\\".$method->class;
 					} 
-				} 
-			 
+				}  
 			} 
 		} 
 		$sql = "select * from route  order by sort desc,id asc";
-		$all = DB::queryAll($sql); 
+		$all = DB::queryAll($sql);   
 		if($all){
 			foreach($all as $v){
-				$a = $v->route;
+				$a = $v['route'];
 				$a = str_replace('[','<',$a);
 				$a = str_replace(']','>',$a); 
-				$route[$a] = $v->route_to;
- 			}  
-			\MinCache::set('route',$route);
+				if($a)
+					$route[$a] = $v['route_to'];
+ 			}   
+ 			if($route)
+				\MinCache::set('route',$route);
 		} 
 		
 		\MinCache::set('all_modules_alias',$m); 

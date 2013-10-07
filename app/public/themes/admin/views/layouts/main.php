@@ -4,7 +4,7 @@ use yii\widgets\Menu;
 use application\core\Avatar;
 yii\web\JqueryAsset::register($this);
 application\asset\BootStrap::register($this); 
-js_file(http().'js/admin.js');
+js_file(http().'comm/js/admin.js');
 widget('select2'); 
 ?>
 <?php $this->beginPage(); ?>
@@ -15,8 +15,8 @@ widget('select2');
 	<title><?php echo __('backend admin'); ?></title>
 	<?php $this->head(); 
 	css_file(http().'misc/bootstrap/css/docs.css'); 
-	css_file(http().'css/admin.css');
-	js_file(http().'js/php.js');
+	css_file(http().'comm/css/admin.css');
+	js_file(http().'comm/js/php.js');
 	css_file(theme_url().'css.css');   
 	?>
  
@@ -26,7 +26,7 @@ widget('select2');
 <div class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"> 
 	     <div class="container"> 
 		      <a class="navbar-brand" href="<?php echo url('core/site/index');?>"><?php echo __('backend admin');?></a>
-		      <div id='nav' class="nav-collapse collapse"> 
+		      <div id='nav' class="nav-collapse "> 
 		    		<?php 
 					
 						echo Menu::widget(array(
@@ -39,7 +39,7 @@ widget('select2');
 					?> 
 					<span style="position: absolute;right: 104px;top: 6px;">
 						<a href="<?php echo url('auth/user/change');?>">
-							<img src="<?php echo Avatar::get_gravatar(identity('email'),40);?>" title="<?php echo identity('username');?>  " /> 
+							<img src="<?php echo Avatar::get_gravatar(user('email'),40);?>" title="<?php echo user('username');?>  " /> 
 						</a>
 						<a href="<?php echo url('auth/open/logout');?>"  style="color:#fff;position: relative;top: 15px;"
 							onclick="return confirm('<?php echo __('logout');?>');"> 

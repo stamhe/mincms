@@ -33,8 +33,8 @@ $default_route = array(
 	'preset'=>'auth/open/reset',
 	'core'=>'core/config/index',
 	'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
-);
-$routes = array_merge( $route , $default_route); 
+); 
+$routes = array_merge( $route , $default_route);    
 $main =  array(
 	'id' => 'hello',
 	'timeZone'=>'Asia/Shanghai',

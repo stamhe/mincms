@@ -49,7 +49,7 @@ class TaobaoController extends OauthController
 		    array(
 		        'method'  => 'POST',
 		        'header'  => 'Content-type: application/x-www-form-urlencoded',
-		        'content' => Arr::query($postdata)
+		        'content' => http_build_query($postdata)
 		    )
 		);   
 		$data = json_decode(Load::url(Taobao::url_access_token(),$opts));

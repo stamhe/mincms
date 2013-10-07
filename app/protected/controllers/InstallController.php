@@ -6,7 +6,8 @@ class InstallController extends \application\core\FrontController
 { 
 	public $minify = false; 
 	public $bin;
- 
+	//∆Ù”√ ˝æ›ø‚
+ 	public $db = false;
 	function init(){
 		parent::init();  
 		global $app; 

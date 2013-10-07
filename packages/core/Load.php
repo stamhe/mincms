@@ -23,7 +23,7 @@ class Load
 	        'content' => $array
 	    )
 	);  
-	Arr::query($array)
+	http_build_query($array)
     */
 	static function url($url,$opts=null){
 		if(null==$opts) return file_get_contents($url);

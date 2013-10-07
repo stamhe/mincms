@@ -72,11 +72,11 @@ $fields = Classes::structure($name);
 	      	 &nbsp;   
 	        <?php if($model->display == 1){?>
 	        	<a href="<?php echo url('content/node/display',array('name'=>$name,'id'=>$model->id));?> ">
-	        		<img src="<?php echo http();?>img/right.png" />
+	        		<img src="<?php echo http();?>comm/img/right.png" />
 	        	</a>
 	        <?php }else{?>
 	        	<a href="<?php echo url('content/node/display',array('name'=>$name,'id'=>$model->id));?> ">
-	        		<img src="<?php echo http();?>img/error.png" />
+	        		<img src="<?php echo http();?>comm/img/error.png" />
 	        	</a> 
 	        <?php }}else{?>
 	      		
@@ -86,11 +86,11 @@ $fields = Classes::structure($name);
 		      			&nbsp;  
 		      			<?php if($model->display == 1){?>
 			        	<a href="<?php echo url('content/node/display',array('name'=>$name,'id'=>$model->id));?> ">
-			        		<img src="<?php echo http();?>img/right.png" />
+			        		<img src="<?php echo http();?>comm/img/right.png" />
 			        	</a>&nbsp;  
 			        	<?php }else{?>
 			        	<a href="<?php echo url('content/node/display',array('name'=>$name,'id'=>$model->id));?> ">
-			        		<img src="<?php echo http();?>img/error.png" />
+			        		<img src="<?php echo http();?>comm/img/error.png" />
 			        	</a> &nbsp;  	
 		      		<?php 
 		      		}}?>
