@@ -20,11 +20,14 @@ class Theme extends \yii\base\Theme
 	public function init()
 	{ 
 		if(!\Yii::$app->controller){
-			 header('');  
-			 
+			 exit('Theme has error'); 
 		}
-	 
-		$theme =\Yii::$app->controller->theme;
+	 	if(!method_exists(\Yii::$app->controller,'theme'))
+	 	{
+	 		$theme = 'default';
+	 	}else{
+			$theme = \Yii::$app->controller->theme;
+		}
 		$this->pathMap = array(
 			'@app/views'=>'@webroot/themes/'.$theme.'/views'
 		);

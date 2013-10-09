@@ -12,6 +12,9 @@ $modules['imagecache'] = 1;
 $modules['file'] = 1;
 $modules['route'] = 1; 
 
+if(true === YII_DEBUG)
+	$modules['gii'] = 'yii\gii\Module';
+
 if($modules){
 	$alia = 'application';
 	$alias = cache_pre('all_modules_alias');

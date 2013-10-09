@@ -32,14 +32,14 @@ class View extends \yii\base\View
 	public function renderFile($viewFile, $params = array(), $context = null)
 	{
 		$out = parent::renderFile($viewFile, $params , $context );
-		if(\Yii::$app->controller->minify){ 
+		if(method_exists(\Yii::$app->controller,'minify') && \Yii::$app->controller->minify){ 
 			$out =  preg_replace(array('/ {2,}/','/<!--.*?-->|\t|(?:\r?\n[\t]*)+/s'),array(' ',''),$out); 
 		}
 		return $out;
 	} 
 	protected function renderHeadHtml()
 	{  
-		if(\Yii::$app->controller->minify_css === true){ 
+		if(method_exists(\Yii::$app->controller,'minify_css') && \Yii::$app->controller->minify_css === true){ 
 			$js = $this->cssFiles;  
 			unset($this->cssFiles);
 			$out = parent::renderHeadHtml(); 
@@ -60,7 +60,7 @@ class View extends \yii\base\View
 	}
 	protected function renderBodyEndHtml()
 	{  
-		if(\Yii::$app->controller->minify_js === true){ 
+		if(method_exists(\Yii::$app->controller,'minify_js') && \Yii::$app->controller->minify_js === true){ 
 			$js = $this->jsFiles[self::POS_END];  
 			unset($this->jsFiles[self::POS_END]);
 			$out = parent::renderBodyEndHtml();  

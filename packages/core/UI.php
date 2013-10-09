@@ -33,8 +33,8 @@ class UI
 			}); 
 		");	
 		js("");
-		js_file('js/php.js');
-		js_file('js/jquery.form.js');
+		js_file('comm/js/php.js');
+		js_file('comm/js/jquery.form.js');
 	 
    }
    static function sort($id,$url){ 
