@@ -10,11 +10,7 @@ $modules['core'] = 1;
 $modules['auth'] = 1;
 $modules['imagecache'] = 1;
 $modules['file'] = 1;
-$modules['route'] = 1; 
-
-if(true === YII_DEBUG)
-	$modules['gii'] = 'yii\gii\Module';
-
+$modules['route'] = 1;   
 if($modules){
 	$alia = 'application';
 	$alias = cache_pre('all_modules_alias');
@@ -94,8 +90,7 @@ $main =  array(
 	),
 	'params' => require(__DIR__ . '/params.php'),
 );
-if (YII_DEBUG) {
-//	$main['preload'][] = 'debug';
+if (YII_DEBUG) { 
 	$main['modules']['debug'] = 'yii\debug\Module';
 	$main['modules']['gii'] = 'yii\gii\Module';
 }
