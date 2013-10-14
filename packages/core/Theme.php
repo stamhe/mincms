@@ -22,12 +22,12 @@ class Theme extends \yii\base\Theme
 		if(!\Yii::$app->controller){
 			 exit('Theme has error'); 
 		}
-	 	if(!method_exists(\Yii::$app->controller,'theme'))
+	 	if(!property_exists(\Yii::$app->controller,'theme'))
 	 	{
 	 		$theme = 'default';
 	 	}else{
 			$theme = \Yii::$app->controller->theme;
-		}
+		} 
 		$this->pathMap = array(
 			'@app/views'=>'@webroot/themes/'.$theme.'/views'
 		); 
