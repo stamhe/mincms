@@ -11,8 +11,13 @@ class InstallController extends \application\core\FrontController
 	function init(){
 		parent::init();  
 		global $app; 
+		
 		$this->theme = 'default'; 
 		include $app['application'].'/mysql.php';
+		//安装完成后可删除
+		\MinCache::delete('all_modules_alias');
+		\MinCache::delete('all_modules');
+		\MinCache::delete('hooks');
 	}
 	 
  
