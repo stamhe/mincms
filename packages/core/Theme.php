@@ -30,7 +30,7 @@ class Theme extends \yii\base\Theme
 		}
 		$this->pathMap = array(
 			'@app/views'=>'@webroot/themes/'.$theme.'/views'
-		);
+		); 
 		$this->baseUrl = '@web/themes/'.$theme;
 		$this->basePath = '@webroot/themes/'.$theme; 
 	  
