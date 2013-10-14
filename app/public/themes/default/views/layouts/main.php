@@ -15,13 +15,13 @@ css_file(theme_url().'app.css');
 <html lang="en">
 <head>
 	<meta charset="utf-8"/>
-	<title>Welcome to MinCMS</title>
+	<title>MinCMS</title>
 	<?php $this->head();  ?> 
 </head>
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top bs-docs-nav">
   <div class="container">
-    <a href="<?php echo url('site/index');?>" class="navbar-brand">MinCMS 2.0.1</a>
+    <a href="<?php echo url('site/index');?>" class="navbar-brand">MinCMS 2.1稳定版</a>
     <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
