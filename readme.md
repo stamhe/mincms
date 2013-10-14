@@ -1,17 +1,21 @@
-## MinCMS  2.1 RELASE
+## MinCMS  2.1 稳定版
    
-## Technology
-* [Yii 2](http://github.com/yiisoft/yii2)
+## 技术使用
+* [PHP框架 Yii 2](http://github.com/yiisoft/yii2)
 * [BootStrap 3](http://getbootstrap.com/)
 * [Composer](http://getcomposer.org) 
  
-## REQUIREMENTS
-* PHP_VERSION 5.3.11 +
-* MCrypt, GD, Reflection, PCRE, SPL, MBString, Intl  extends
-* Apache Rewrite 
+## 环境要求
+* PHP版本 5.3.11 +
+* 扩展 MCrypt, GD, Reflection, PCRE, SPL, MBString, Intl  extends
+* Apache重复
 
-### INSTALL
-httpd-vhosts `yourdomain` is your custom domain
+### 安装
+执行Composer安装依赖的包
+```
+php composer.phar install 
+``` 
+apache httpd-vhosts 配置`yourdomain` 是你的域名
 ```
 <VirtualHost *:80>
     ServerAdmin your@your-email.address
@@ -21,70 +25,18 @@ httpd-vhosts `yourdomain` is your custom domain
     CustomLog "logs/mincms.log" common
 </VirtualHost>
 ```
-Notice `mincms/app/public` is webroot
-visite `http://yourdomain` it will show default page. there is install link.if your didn't installed mincms before.
-backend link `http://yourdomain/admin` 
+注意 `mincms/app/public` 是网站根目录
+请访问 `http://yourdomain` 将会有提示安装，安装成功后直接访问 `http://yourdomain/admin`  
 
- 
+## 授权
+免费使用于任何目的，不限商用。无需注明来源MINCMS。
 
-## MinCMS Content Manage System Functions
-* packages is for comm application.such as modules,widget ,config and so on.
-* there is a Composer install under packages dir. so you need `Composer install`
-* auth module support access for user groups.
-* email module support send mailer to some one
-* content module ,this is very powerful module.it is easy create many kinds of contents.
-* imageache module ,real cool module ,it it easy set image effect such as resize crop and so on
-* for more great functions. install it. lol :) 
+## (捐助我们)[https://me.alipay.com/suenkang]
+捐助将直接用于官方网站开发与MINCMS的开发与维护。 
 
-## Documents
-   On dev......
-
-### model show lists
-controller:
+## 联系我们
 ```
-public function actionIndex()
-{    
-	$rt = \application\core\Pagination::run('\application\modules\auth\models\User');   
-	return $this->render('index', array(
-	   'models' => $rt->models,
-	   'pages' => $rt->pages,
-	));
-}
-public function actionDelete($id){
-	if($_POST['action']==1){ 
-		$model = \application\modules\auth\models\User::find($id); 
-		$model->delete();
-		echo json_encode(array('id'=>array($id),'class'=>'alert-success','message'=>__('delete user success')));
-		exit;
-	} 
-}
-```
-
-view:
-
-``` 
-<?php echo application\core\widget\Table::widget(array(
-	'models'=>$models,
-	'pages'=>$pages,
-	'modal'=>true,
-	'title'=>__('remove template'),
-	'content'=>'do you want to do this',
-	'fields'=>array('slug','memo')	,
-));?>
-```
-
-
-## Fair Licensing 
- 
-**MinCMS is free and released as open source software covered by the terms of the [GNU Public License](http://www.gnu.org/licenses/gpl-3.0.html) (GPL v3).** You may not use the software, documentation, and samples except in compliance with the license. If the terms and conditions of this license are too restrictive for your use, alternative licensing is available for a very reasonable fee.
-
-If you feel that this software is one great weapon to have in your programming arsenal, it saves you a lot of time and money, use it for commercial gain or in your business organization, please consider making a donation to the project. A significant amount of time, effort, and money has been spent on this project. Your donations help keep this project alive and the development team motivated. Donors and sponsors get priority support (24-hour response time on business days).
-
-
-## Connect US 
-```
-QQ group：40933125
-Email: mincms@outlook.com
+QQ群：40933125 
 ```
  
 
