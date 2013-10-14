@@ -15,6 +15,11 @@
 ```
 php composer.phar install 
 ``` 
+然后设置目录权限
+```
+chmod -R 777 app/protected/runtime/
+chmod -R 777 app/public/assets/
+```
 apache httpd-vhosts 配置`yourdomain` 是你的域名
 ```
 <VirtualHost *:80>
@@ -31,7 +36,7 @@ apache httpd-vhosts 配置`yourdomain` 是你的域名
 ## 授权
 免费使用于任何目的，不限商用。无需注明来源MINCMS。
 
-## (捐助我们)[https://me.alipay.com/suenkang]
+## [捐助我们](https://me.alipay.com/suenkang)
 捐助将直接用于官方网站开发与MINCMS的开发与维护。 
 
 ## 联系我们
