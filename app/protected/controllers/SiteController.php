@@ -9,7 +9,10 @@ class SiteController extends \application\core\FrontController
 	function init(){
 		parent::init();
 		$this->theme = 'default';
-		 
+		//安装完成后可删除
+		MinCache::delete('all_modules_alias');
+		MinCache::delete('all_modules');
+		MinCache::delete('hooks');
 	}
 	public function actions()
 	{
