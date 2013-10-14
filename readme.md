@@ -19,7 +19,9 @@ php composer.phar install
 ```
 chmod -R 777 app/protected/runtime/
 chmod -R 777 app/public/assets/
+chmod -R 777 app/protected/config/database.php
 ```
+
 apache httpd-vhosts 配置`yourdomain` 是你的域名
 ```
 <VirtualHost *:80>
@@ -30,8 +32,11 @@ apache httpd-vhosts 配置`yourdomain` 是你的域名
     CustomLog "logs/mincms.log" common
 </VirtualHost>
 ```
+
 注意 `mincms/app/public` 是网站根目录
-请访问 `http://yourdomain` 将会有提示安装，安装成功后直接访问 `http://yourdomain/admin`  
+请访问 `http://yourdomain` 将会有提示安装，安装成功后 
+`app/protected/config/database.php`  777权限去掉
+直接访问 `http://yourdomain/admin`  
 
 ## 授权
 免费使用于任何目的，不限商用。无需注明来源MINCMS。
