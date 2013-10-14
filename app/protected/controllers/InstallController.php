@@ -11,7 +11,7 @@ class InstallController extends \application\core\FrontController
 	function init(){
 		parent::init();  
 		global $app; 
-		$this->theme = 'app'; 
+		$this->theme = 'default'; 
 		include $app['application'].'/mysql.php';
 	}
 	 

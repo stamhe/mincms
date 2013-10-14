@@ -8,7 +8,7 @@ class SiteController extends \application\core\FrontController
 	public $db = false;
 	function init(){
 		parent::init();
-		$this->theme = 'app';
+		$this->theme = 'default';
 		 
 	}
 	public function actions()
